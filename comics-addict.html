@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#003 - COMICS ADDICT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #d7e3f4;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', monospace;
+            background: repeating-linear-gradient(45deg,
+                    #d7e3f4,
+                    #d7e3f4 10px,
+                    #9fb5cc 10px,
+                    #9fb5cc 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff8dc;
+            border: 6px solid #111;
+            border-radius: 12px;
+            box-shadow: 8px 8px #333;
+        }
+
+        .pokedex-header {
+            background: #6a1b9a;
+            color: #fff;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            border: 3px solid #000;
+            box-shadow: 0 2px #000;
+            margin-bottom: 20px;
+        }
+
+        .sprite {
+            display: block;
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 20px;
+            image-rendering: pixelated;
+        }
+
+        .entry-box {
+            background: #f1e8c5;
+            border: 3px solid #111;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .entry-box p {
+            margin-bottom: 16px;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 8px;
+            color: #333;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            font-size: 10px;
+            background: #6a1b9a;
+            color: #fff;
+            padding: 8px 12px;
+            border: 3px solid #111;
+            text-decoration: none;
+            box-shadow: 3px 3px #000;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            background: #b71c1c;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="pokedex-header">#003 - COMICS ADDICT</div>
+
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/vs-recorder.png" alt="Comics Icon"
+            class="sprite">
+
+        <div class="entry-box">
+            <p>I've always been a huge movies and literature fan. I've seen and read countless movies and books of each and every genre. From action to thriller to horror to romance, all of it.</p>
+            <p>Of course like most kids, my fascination for these things came from cartoons. Cartoon Network, Pogo etc of course heavily influenced my tastes.</p>
+            <p>Though if I had to say what really kickstarted my particular fascination for comic books, it was my 6th birthday. One of the gifts I received was a CD with the entire Spider-man trilogy on it.</p>
+            <p>From there started my love for what I can confidently say is objectively the best comic book character of all time, Spider-man. And yes, I am still a big fan till now.</p>
+            <p>The Spider-man movies also made me gain interest for other superhero movies. And then of course as I grew up came the emergence of the Marvel Cinenamtic Universe, which put comic book superheroes in the limelight. It was a tremendous success and really invigorated an even deeper love for superheroes into the general public than what was already present.</p>
+            <p>And me being the massive comics nerd I am, I went online and started reading comic books. I read the entire line of Spider-man comics from The Amazing Fantasy #15 (debut comic) to The Amazing Spider-man ongoing series including the spin-off comics. To put this into perespective, I read nearly 5000 issues of Spider-man comics. Yeah, I love Spider-man, don't question it.</p>
+            <p>I started reading other superhero comic books too. I even read other brands like DC, Image etc.</p>
+            <p>It might seem kiddish what I'm saying, but comics genuinely contain some of the best pieces of fiction I have ever read. A combination of detailed stories and intricate artstyle along with the years of character history make it truly an enigmatic experience to read.</p>
+            <p>The characters of a particular existing in a shared universe also lead to a lot of entertaining interactions and crossover comics which are hype-worthy and fun.</p>
+        </div>
+
+        <div class="blog-meta">
+            <span>🗓️ June 11, 2025</span>
+            <span id="now-playing">🎵 Now Playing: Loading...</span>
+            <span>🏷️ Tags: literature, comics, superheroes</span>
+        </div>
+
+        <a href="blog.html" class="back-btn">← Return to Blogdex</a>
+    </div>
+    <script>
+        const username = "easw3r";
+        const apiKey = "b8ceb8a6de64edcbba90e86730f0efef";
+
+        async function fetchNowPlaying() {
+            const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                const track = data.recenttracks.track[0];
+                const song = `${track.name} - ${track.artist["#text"]}`;
+                const nowPlaying = track["@attr"]?.nowplaying === "true"
+                    ? `🎵 Now Playing: "${song}"`
+                    : `🎵 Last Played: "${song}"`;
+
+                document.getElementById("now-playing").textContent = nowPlaying;
+            } catch (err) {
+                document.getElementById("now-playing").textContent = "🎵 Unable to fetch song";
+            }
+        }
+
+        fetchNowPlaying();
+    </script>
+</body>
+
+</html>
