@@ -37,6 +37,7 @@
             max-width: 500px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
             margin: 20px;
+            margin-top: 40px;
         }
 
         .screen {
@@ -136,6 +137,34 @@
             line-height: 1.5;
         }
 
+        .footer-bar {
+            background: #f1e8c5;
+            border: 3px solid #111;
+            display: inline-block;
+            padding: 8px 16px;
+            box-shadow: 4px 4px #333;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .footer-bar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.2s ease;
+        }
+
+        .footer-bar a:hover {
+            color: #d32f2f;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin: 40px auto 20px;
+            text-align: center;
+        }
+
         @media (max-width: 500px) {
             nav a {
                 font-size: 8px;
@@ -183,6 +212,14 @@
                 Everyone loves using plastic and not recycling.</div>
         </div>
     </section>
+    <footer>
+        <div class="footer-bar">
+            <a href="https://amrita.town">amrita.town</a>
+            <a href="https://amrita.town/prev">← prev</a>
+            <a href="https://amrita.town/random">⚄ random</a>
+            <a href="https://amrita.town/next">next →</a>
+        </div>
+    </footer>
 </body>
 
 </html>
