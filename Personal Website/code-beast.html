@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#002 - CODER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #d7e3f4;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', monospace;
+            background: repeating-linear-gradient(45deg,
+                    #d7e3f4,
+                    #d7e3f4 10px,
+                    #9fb5cc 10px,
+                    #9fb5cc 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff8dc;
+            border: 6px solid #111;
+            border-radius: 12px;
+            box-shadow: 8px 8px #333;
+        }
+
+        .pokedex-header {
+            background: #1565c0;
+            color: #fff;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            border: 3px solid #000;
+            box-shadow: 0 2px #000;
+            margin-bottom: 20px;
+        }
+
+        .sprite {
+            display: block;
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 20px;
+            image-rendering: pixelated;
+        }
+
+        .entry-box {
+            background: #f1e8c5;
+            border: 3px solid #111;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .entry-box p {
+            margin-bottom: 16px;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 8px;
+            color: #333;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            font-size: 10px;
+            background: #1565c0;
+            color: #fff;
+            padding: 8px 12px;
+            border: 3px solid #111;
+            text-decoration: none;
+            box-shadow: 3px 3px #000;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            background: #b71c1c;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="pokedex-header">#002 - CODER</div>
+
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/up-grade.png" alt="Code Icon"
+            class="sprite">
+
+        <div class="entry-box">
+            <p>Ok, well as a computer science major, I cannot have a blog without atleast somewhat discussing my coding history.</p>
+            <p>I wasn't the best coder and I still am not. I do stuff which interest me and build things which I find is fun and thats about it. I don't know if I'm gonna get a job at this rate but oh well.</p>
+            <p>My coding journey basically started in 8th grade with c++. Yeah, I started late because in my previous school they were gonna start coding later on. And boy did I hate it.</p>
+            <p>It was a very new thing and I didn't understand anything. Fortunately, it didn't take me too long to learn the syntaxes of the languages they thought nd it became easier. I especially loved java alot.</p>
+            <p>I really enjoyed coding and wanted to pursue it further. However in 10th grade, I had a change of heart and decided to study medicine and try to become a doctor instead.</p>
+            <p>Fast forward two years and failed NEET attempt later, and I switched back to computer science. I got into CSc Core at Amrita, Bengaluru due to my JEE marks (Thank god I wrote that as a backup) and now I had to get back to a field that I hadn't thought about in 2 whole years.</p>
+            <p>Suffice to say, it's been a journey of highs and lows. On one end, its been amazing learning things I had never learnt before. Coding can be incredibly fun and you get to build amazing projects that can amount to so much. There are many fascinating tools out there where are interesting to learn and the potential is limitless.</p>
+            <p>On the other hand, there is an insane amount of things that its very easy to be overwhelmed. Despite missing out on 2 years, I did catch up fairly well. But there are people who know so much about this field and it's intracacies that you are left wondering if the amount of knowledge you have is even significant or not. And of course, the fear of ever getting a job is ever too real.</p>
+            <p>Regardless, it has overall been a tremendous journey and I am happy to be a computer science engineer.</p>
+            <p>Currently, I am working on practicing DSA and DAA in Java using leetcode and doing data analytics and machine learning in python. I am also starting to experiment with Rust.</p>
+            <p>On top of this, I also have a interest in building websites like the one you are currently on and tinkering with front end elements. Alot of my friends have been recommending me to try astro, and I want to go through with that aswell.</p>
+        </div>
+
+        <div class="blog-meta">
+            <span>🗓️ June 11, 2025</span>
+            <span id="now-playing">🎵 Now Playing: Loading...</span>
+            <span>🏷️ Tags: java, python, programming</span>
+        </div>
+
+        <a href="blog.html" class="back-btn">← Return to Blogdex</a>
+    </div>
+    <script>
+        const username = "easw3r"; 
+        const apiKey = "b8ceb8a6de64edcbba90e86730f0efef"; 
+
+        async function fetchNowPlaying() {
+            const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                const track = data.recenttracks.track[0];
+                const song = `${track.name} - ${track.artist["#text"]}`;
+                const nowPlaying = track["@attr"]?.nowplaying === "true"
+                    ? `🎵 Now Playing: "${song}"`
+                    : `🎵 Last Played: "${song}"`;
+
+                document.getElementById("now-playing").textContent = nowPlaying;
+            } catch (err) {
+                document.getElementById("now-playing").textContent = "🎵 Unable to fetch song";
+            }
+        }
+
+        fetchNowPlaying();
+    </script>
+
+</body>
+
+</html>

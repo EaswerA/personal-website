@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #d7e3f4;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', monospace;
+            background: repeating-linear-gradient(45deg,
+                    #d7e3f4,
+                    #d7e3f4 10px,
+                    #9fb5cc 10px,
+                    #9fb5cc 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .gameboy {
+            background: #d32f2f;
+            border: 8px solid #111;
+            border-radius: 16px;
+            padding: 20px;
+            width: 95%;
+            max-width: 500px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        .screen {
+            background: #f1e8c5;
+            border: 6px solid #111;
+            padding: 20px;
+            box-shadow: inset 0 0 0 4px #fff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .trainer {
+            width: 64px;
+            height: 64px;
+            image-rendering: pixelated;
+            margin: 0 auto 15px;
+        }
+
+        .textbox {
+            border: 3px solid #111;
+            padding: 10px;
+            background: #fff;
+            margin-bottom: 15px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        nav a {
+            padding: 6px 10px;
+            background: #fff;
+            border: 2px solid #111;
+            color: #000;
+            text-decoration: none;
+            font-size: 10px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .projects,
+        .about {
+            max-width: 960px;
+            width: 95%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .project-card,
+        .blog-card {
+            background: #fff8dc;
+            border: 4px solid #111;
+            width: 280px;
+            padding: 20px;
+            font-size: 10px;
+            font-family: 'Press Start 2P', monospace;
+            box-shadow: 4px 4px #555;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: popin 0.6s ease forwards;
+        }
+
+        .project-card:hover,
+        .blog-card:hover {
+            transform: scale(1.05);
+            box-shadow: 6px 6px #333;
+        }
+
+        @keyframes popin {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .project-title,
+        .blog-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-desc,
+        .blog-content {
+            line-height: 1.5;
+        }
+
+        @media (max-width: 500px) {
+            nav a {
+                font-size: 8px;
+            }
+
+            .project-card,
+            .blog-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gameboy">
+        <div class="screen">
+            <h1>WASSSUP! I'm Easwer</h1>
+            <a href="index.html"><img class="trainer" src="image.webp" alt="Trainer Sprite"></a>
+            <div class="textbox">
+                Welcome to my personal website!
+            </div>
+            <nav>
+                <a href="about.html">ABOUT</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="blog.html">BLOGDEX</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+        </div>
+    </div>
+
+    <section id="about" class="about">
+        <div class="blog-card">
+            <div class="blog-title">🎮 Who's This Trainer?</div>
+            <div class="blog-content">Yoo! I'm studying in Amrita Vishwa Vidyapeetham, pursuing my B.Tech CSc Degree. I build (well, try to build lol) things that
+                look cool and feel fun. I aim to give others a good time.</div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-title">🔥 My Faves</div>
+            <div class="blog-content">I'm a curious coder, gymrat, football enthusiast and massive comics nerd. I dabble in front-end development, gym gains, gaming, music and nostalgic anime
+                like Dragon Ball. I can go on and on about anything I love fr.</div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-title">✍️ What am I doing right now?</div>
+            <div class="blog-content">Well, I've just been dabbling in random coding experiments, writing some literature, cooking and expanding this website.
+                I'm gonna try making a blog page styled like a Pokédex entry. So wish me luck pls :)</div>
+        </div>
+    </section>
+</body>
+
+</html>
